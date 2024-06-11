@@ -2,7 +2,7 @@ package collection.array;
 
 import java.util.Arrays;
 
-public class ArrayMain1 {
+public class ArrayBasicMain {
   public static void main(String[] args) {
 
     int[] arr = new int[5];
@@ -30,6 +30,8 @@ public class ArrayMain1 {
       }
     }
 
+    // Arrays.copyOf(기존배열, 새로운길이): 새로운 길이로 배열을 생성하고, 기존 배열의 값을 새로운 배열에 복사한다
+    System.out.println("new array: " + Arrays.toString(Arrays.copyOf(arr, arr.length * 2)));
 
   }
 
