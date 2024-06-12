@@ -1,9 +1,18 @@
 package collection.array;
 
+import org.w3c.dom.Node;
+
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-public class MyArrayListV3 {
+public class MyArrayListV4_generic<E> {
+
+  /**
+   * Object -> E 타입변경
+   *    변경 x
+   *    필드: Object[]
+   *    생성자: Object
+   */
 
   private static final int DEFAULT_CAPACITY = 5;
 
@@ -11,10 +20,10 @@ public class MyArrayListV3 {
   private int size = 0;
 
   // 생성자
-  public MyArrayListV3() {
+  public MyArrayListV4_generic() {
     elementData = new Object[DEFAULT_CAPACITY];
   }
-  public MyArrayListV3(int initialCapacity) {
+  public MyArrayListV4_generic(int initialCapacity) {
     elementData = new Object[initialCapacity];
   }
 
@@ -22,7 +31,7 @@ public class MyArrayListV3 {
     return size;
   }
 
-  public void add(Object e) {
+  public void add(E e) {
     if (size == elementData.length) {
       grow();
     }
@@ -31,7 +40,7 @@ public class MyArrayListV3 {
   }
 
   // 특정 인덱스에 값을 추가한다.
-  public void add(int index, Object e) {
+  public void add(int index, E e) {
     if (elementData.length == size) {
       grow();
     }
@@ -53,19 +62,19 @@ public class MyArrayListV3 {
   }
 
   // 인덱스에 해당되는 값을 리턴
-  public Object get(int index) {
-    return elementData[index];
+  public E get(int index) {
+    return (E) elementData[index];
   }
 
   // 해당 인덱스의 값 변경(변경되기 전 값 리턴)
-  public Object set(int index, Object e) {
-    Object oldValue = get(index);
+  public E set(int index, E e) {
+    E oldValue = get(index);
     elementData[index] = e;
     return oldValue;
   }
 
-  public Object remove(int index) {
-    Object oldValue = get(index);
+  public E remove(int index) {
+    E oldValue = get(index);
     shiftLeftFrom(index);
     size--;
     elementData[size] = null;
@@ -80,7 +89,7 @@ public class MyArrayListV3 {
   }
 
   // 인덱스 반환
-  public int indexOf (Object o) {
+  public int indexOf (E o) {
     return IntStream.range(0, size).filter(i -> o.equals(elementData[i])).findFirst().orElse(-1);
   }
 
@@ -89,5 +98,6 @@ public class MyArrayListV3 {
     return Arrays.toString(Arrays.copyOf(elementData, size)) + " size=" +
             size + ", capacity=" + elementData.length;
   }
+
 
 }

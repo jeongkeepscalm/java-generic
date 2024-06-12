@@ -28,6 +28,9 @@ public class MyArrayListV3Main {
     System.out.println(list);
 
 
+    System.out.println("list.indexOf(\"b\") = " + list.indexOf("b"));
+    System.out.println("list.indexOf(\"z\") = " + list.indexOf("z"));
+
   }
 
 }
