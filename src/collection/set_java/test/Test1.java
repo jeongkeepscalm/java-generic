@@ -1,4 +1,4 @@
-package collection.test;
+package collection.set_java.test;
 
 import java.util.*;
 
